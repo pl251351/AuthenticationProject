@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+<!--needed for logs for stern-->
+{% block content %}
+
+<div class="container-fluid text-center">
+    <div class="p-5 m-5 row bg-danger-subtle">
+        <div class="row text-center">
+            <h1>Video Stream</h1>
+            <img class="center-block img-fluid" src="{{ url_for('video_feed') }}">
+        </div>
+    </div>
+    <div class="p-5 row">
+        <div class="col-sm-4 bg-light">
+            <div class="p-5 row">
+                <div class="col-md-12">
+                    <input id="steps" max="500" min="0" name="steps" type="number" value="5"></input>
+                </div>
+            </div>
+            <div class="p-5 row">
+                <div class="col">
+                    <button class="btn btn-primary" onclick=moves("forward",5,'{{current_user.username}}')
+                            type="button">Forward
+                    </button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary" onclick=moves("reverse",5,'{{current_user.username}}')
+                            type="button">Back
+                    </button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary" onclick=moves("left",5,'{{current_user.username}}') type="button">
+                        Left
+                    </button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary" onclick=moves("right",5,'{{current_user.username}}') type="button">
+                        Right
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 bg-warning-subtle">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">User</th>
+                        <th scope="col">Command</th>
+                        <th scope="col">Result</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-4 bg-primary-subtle">
+            Something Else
+        </div>
+    </div>
+</div>
+</div>
+<div class="container-sm">
+    <div class="p-5 row">
+        <div class="col">
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" onclick=fetchlogs() type="button">Add Row</button>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+{% endblock %}
